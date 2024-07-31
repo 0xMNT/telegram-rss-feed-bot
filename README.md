@@ -47,6 +47,7 @@ Set the following environment variables in your shell configuration file (e.g., 
 ```bash
 export TELEGRAM_BOT_TOKEN='your_bot_token'
 export TELEGRAM_CHAT_ID='your_chat_id'
+export FEED_URL='your_feed_url'
 ```
 
 5. Set Up Cron Job
