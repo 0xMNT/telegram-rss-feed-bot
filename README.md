@@ -67,8 +67,7 @@ Add the following line to run the script every 10 minutes:
 
 ## Main Components
 
-* Environment Variables: The script uses TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID to configure the Telegram bot.
-* RSS Feed URL: Set in the script as FEED_URL.
+* Environment Variables: The script uses TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID to configure the Telegram bot. Set the FEED_URL as well.
 * Seen Entries File: Entries already sent are stored in a pickle file (seen_entries.pkl).
 
 ## Functions
