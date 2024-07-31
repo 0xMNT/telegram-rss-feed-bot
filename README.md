@@ -2,6 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue)
 
+
 This script periodically checks an RSS feed for new entries and sends updates to a specified Telegram chat. It is designed to run as a cron job and uses asynchronous operations to efficiently handle network requests.
 
 ## Features
