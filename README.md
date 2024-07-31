@@ -1,6 +1,6 @@
 # RSS Feed Checker and Telegram Notifier
 
-![Python](https://img.shields.io/badge/python-3.12%2B-blue)
+![Python](https://img.shields.io/badge/python-3.12-green)
 
 
 This script periodically checks an RSS feed for new entries and sends updates to a specified Telegram chat. It is designed to run as a cron job and uses asynchronous operations to efficiently handle network requests.
@@ -16,7 +16,7 @@ This script periodically checks an RSS feed for new entries and sends updates to
 ## Prerequisites
 
 * Python 3.7 or later
-* Telegram bot token and chat ID
+* Telegram bot token and chat ID (check Telegram botFather)
 * Required Python packages (listed in requirements.txt)
 
 ## Installation
