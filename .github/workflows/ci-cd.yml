@@ -37,3 +37,35 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
+
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to server
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FEED_URL: ${{ secrets.FEED_URL  }}
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER }} << 'EOF'
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+            docker pull ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
+            docker stop rss-telegram-notifier || true
+            docker rm rss-telegram-notifier || true
+            docker run --name rss-telegram-notifier \
+              -e TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN \
+              -e TELEGRAM_CHAT_ID=$TELEGRAM_CHAT_ID \
+              -e FEED_URL=$FEED_URL \
+              ${{ secrests.DOCKER_USERNAME }}/rss-telegram-notifier:latest
+          EOF
