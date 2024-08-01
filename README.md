@@ -100,3 +100,20 @@ python app.py
 ```
 
 3. Set up the cron job to run the script periodically.
+
+# Dockerize
+
+## Usage
+
+1. Build the Docker image using the following command:
+
+```bash
+docker build -t <image-name> .
+```
+
+2. Run the Docker container with the required environment variables for Telegram Bot Token, Chat ID and RSS Feed URL.
+
+``` bash
+docker run -d --name <container-name> -e TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN -e TELEGRAM_CHAT_ID=$TELEGRAM_CHAT_ID -e FEED_URL=$FEED_URL <image-name>
+
+```
