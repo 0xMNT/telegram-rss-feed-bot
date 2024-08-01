@@ -64,8 +64,8 @@ jobs:
             docker stop rss-telegram-notifier || true
             docker rm rss-telegram-notifier || true
             docker run --name rss-telegram-notifier \
-              -e TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN \
-              -e TELEGRAM_CHAT_ID=$TELEGRAM_CHAT_ID \
-              -e FEED_URL=$FEED_URL \
+              -e TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}\
+              -e TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}\
+              -e FEED_URL=${{ secrets.FEED_URL }} \
               ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
           EOF
