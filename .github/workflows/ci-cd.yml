@@ -67,5 +67,5 @@ jobs:
               -e TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN \
               -e TELEGRAM_CHAT_ID=$TELEGRAM_CHAT_ID \
               -e FEED_URL=$FEED_URL \
-              ${{ secrests.DOCKER_USERNAME }}/rss-telegram-notifier:latest
+              ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
           EOF
