@@ -33,4 +33,4 @@ jobs:
         run: docker build -t rss-telegram-notifier .
 
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/dockerhub:rss-telegram-notifier:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/dockerhub:rss-telegram-notifier
