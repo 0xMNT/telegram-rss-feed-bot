@@ -32,5 +32,8 @@ jobs:
       - name: Build Docker image
         run: docker build -t rss-telegram-notifier .
 
+      - name: Tag Image
+        run: docker tag rss-telegram-notifier ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
+
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/dockerhub:rss-telegram-notifier
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
