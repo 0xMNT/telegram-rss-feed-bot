@@ -39,6 +39,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/rss-telegram-notifier:latest
 
 
+  # Tested on Hetzner Cloud x86 Server
   deploy:
     needs: build
     runs-on: ubuntu-latest
