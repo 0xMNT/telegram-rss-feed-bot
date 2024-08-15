@@ -55,11 +55,19 @@ export FEED_URL='your_feed_url'
 ```bash
 crontab -e
 ```
-
-Add the following line to run the script every 10 minutes:
+Cron jobs run in a minimal environment, so they do not automatically inherit environment variables that are set in your shell session, therefor we need to put the variables in the cronjob.
 
 ```bash
-*/10 * * * * /usr/bin/env bash -c 'source /path/to/your/.bashrc; /path/to/your/python /path/to/your/script.py'
+TELEGRAM_BOT_TOKEN='your_bot_token'
+TELEGRAM_CHAT_ID='your_chat_id'
+FEED_URL='your_feed_url'
+``` 
+
+Add the following line to run the script every 30 minutes
+The logfile will be saved in the /root dir.
+
+```bas
+*/30 * * * * /root/telegram-rss-feed-bot/.venv/bin/python3.11 /root/telegram-rss-feed-bot/app.py >> logfile.log 2>&1
 ```
 
 
